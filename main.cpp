@@ -12,7 +12,7 @@ int main(){
     Point point;
     
     while(!WindowShouldClose()){
-        point.update();
+        point.update(0.1, 1);
 
         BeginDrawing();
             ClearBackground(BLANK);

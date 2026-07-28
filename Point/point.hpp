@@ -9,6 +9,6 @@ public:
     };
     PointVertex pv;
 
-    void update();
+    void update(float gravity, float friction);
     void Draw(); 
 };
