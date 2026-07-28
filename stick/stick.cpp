@@ -1,6 +1,6 @@
 #include "stick.hpp"
 
-void Stick::Update(Vector2& point1, Vector2& point2, int length){
+void Stick::Update(Vector2& point1, Vector2& point2, float length){
     //teorema de pitagoras para descobrir a distancia
     float cateto_X = point2.x - point1.x;
     float cateto_Y = point2.y - point1.y;

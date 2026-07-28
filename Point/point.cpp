@@ -1,22 +1,10 @@
 #include "point.hpp"
 
-void Point::Load(){
-    std::random_device rd;
-    std::mt19937 gen(rd());
+void Point::Load(Vector2 position, Vector2 old_position){
+    pv.position = position;
+    pv.old_position = old_position;
     
-    for(int i = 0; i < 2; i++){
-        listaVertex.push_back(pv);
-    }
-    for(int b = 0; b < listaVertex.size(); b++){
-        std::uniform_int_distribution<int> valor_aleatoriosX(0, 800);
-        std::uniform_int_distribution<int> valor_aleatoriosY(0, 600);
-
-        listaVertex[b].position.x = float(valor_aleatoriosX(gen));
-        listaVertex[b].position.y = float(valor_aleatoriosY(gen));
-
-        listaVertex[b].old_position.x = listaVertex[b].position.x - 5;
-        listaVertex[b].old_position.y = listaVertex[b].position.y - 5;
-    }
+    listaVertex.push_back(pv);
 }
 
 void Point::update(float gravity, float friction){
