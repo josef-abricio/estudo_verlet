@@ -16,7 +16,7 @@ int main(){
     point.Load();
     while(!WindowShouldClose()){
         point.update(0.1, 1);
-
+        stick.Update(point.listaVertex[0].position, point.listaVertex[1].position, 60);
         BeginDrawing();
             ClearBackground(BLANK);
             point.Draw();

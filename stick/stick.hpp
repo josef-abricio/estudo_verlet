@@ -1,5 +1,6 @@
 #pragma once
 #include <raylib.h>
+#include <cmath>
 
 class Stick{
 public:
@@ -10,6 +11,6 @@ public:
     };
     stick_vertex st;
 
-    void Update();
+    void Update(Vector2& point1, Vector2& point2, int length);
     void Render(Vector2& point1, Vector2& point2);
 };
