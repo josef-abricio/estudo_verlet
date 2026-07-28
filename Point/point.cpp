@@ -1,33 +1,56 @@
 #include "point.hpp"
 
+void Point::Load(){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    
+    for(int i = 0; i < 2; i++){
+        listaVertex.push_back(pv);
+    }
+    for(int b = 0; b < listaVertex.size(); b++){
+        std::uniform_int_distribution<int> valor_aleatoriosX(0, 800);
+        std::uniform_int_distribution<int> valor_aleatoriosY(0, 600);
+
+        listaVertex[b].position.x = float(valor_aleatoriosX(gen));
+        listaVertex[b].position.y = float(valor_aleatoriosY(gen));
+
+        listaVertex[b].old_position.x = listaVertex[b].position.x - 5;
+        listaVertex[b].old_position.y = listaVertex[b].position.y - 5;
+    }
+}
+
 void Point::update(float gravity, float friction){
-    float velocty_x = (pv.position.x - pv.old_position.x) * friction;
-    float velocty_y = (pv.position.y - pv.old_position.y) * friction;
-
-    pv.old_position.x = pv.position.x;
-    pv.old_position.y = pv.position.y;
-
-    pv.position.x += velocty_x;
-    pv.position.y += velocty_y + gravity;
-
-    if( pv.position.x < 0){
-        pv.position.x = 0;
-        pv.old_position.x = pv.position.x + velocty_x;
-    }
-    if( pv.position.x > 800){
-        pv.position.x = 800;
-        pv.old_position.x = pv.position.x + velocty_x;
-    }
-    if( pv.position.y < 0){
-        pv.position.y = 0;
-        pv.old_position.y = pv.position.y + velocty_y;
-    }
-    if( pv.position.y > 600){
-        pv.position.y = 600;
-        pv.old_position.y = pv.position.y + velocty_y;
+    for(int i = 0; i < listaVertex.size(); i++){
+        float velocty_x = (listaVertex[i].position.x - listaVertex[i].old_position.x) * friction;
+        float velocty_y = (listaVertex[i].position.y - listaVertex[i].old_position.y) * friction;
+        
+        listaVertex[i].old_position.x = listaVertex[i].position.x;
+        listaVertex[i].old_position.y = listaVertex[i].position.y;
+        
+        listaVertex[i].position.x += velocty_x;
+        listaVertex[i].position.y += velocty_y + gravity;
+        
+        if( listaVertex[i].position.x < 0){
+            listaVertex[i].position.x = 0;
+            listaVertex[i].old_position.x = listaVertex[i].position.x + velocty_x;
+        }
+        if( listaVertex[i].position.x > 800){
+            listaVertex[i].position.x = 800;
+            listaVertex[i].old_position.x = listaVertex[i].position.x + velocty_x;
+        }
+        if( listaVertex[i].position.y < 0){
+            listaVertex[i].position.y = 0;
+            listaVertex[i].old_position.y = listaVertex[i].position.y + velocty_y;
+        }
+        if( listaVertex[i].position.y > 600){
+            listaVertex[i].position.y = 600;
+            listaVertex[i].old_position.y = listaVertex[i].position.y + velocty_y;
+        }
     }
 }
 
 void Point::Draw(){
-    DrawCircle(pv.position.x, pv.position.y, 3, WHITE);
+    for(int i = 0; i < listaVertex.size(); i++){
+        DrawCircle(listaVertex[i].position.x, listaVertex[i].position.y, 3, WHITE);
+    }
 }

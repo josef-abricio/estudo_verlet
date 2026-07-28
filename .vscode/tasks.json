@@ -16,7 +16,7 @@
                 "args": [
                     "RAYLIB_PATH=C:/raylib/raylib",
                     "PROJECT_NAME=${fileBasenameNoExtension}",
-                    "OBJS=main.cpp Point/point.cpp", 
+                    "OBJS=main.cpp Point/point.cpp stick/stick.cpp", 
                     "BUILD_MODE=DEBUG"
                 ]
             },
@@ -57,7 +57,7 @@
                 "args": [
                     "RAYLIB_PATH=C:/raylib/raylib",
                     "PROJECT_NAME=${fileBasenameNoExtension}",
-                    "OBJS=main.cpp Point/point.cpp"
+                    "OBJS=main.cpp Point/point.cpp stick/stick.cpp"
                 ]
             },
             "osx": {
